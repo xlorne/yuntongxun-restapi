@@ -15,6 +15,22 @@ public class YtxMsgServiceImpl implements YtxMsgService {
 
     private CCPRestSDK restAPI;
 
+
+    public YtxMsgServiceImpl() {
+        restAPI = new CCPRestSDK();
+        String ip = ConfigUtils.getString("yuntongxun.properties","ip");
+        String port = ConfigUtils.getString("yuntongxun.properties","port");
+        String accountSid = ConfigUtils.getString("yuntongxun.properties","accountSid");
+        String accountToken = ConfigUtils.getString("yuntongxun.properties","accountToken");
+        String appId = ConfigUtils.getString("yuntongxun.properties","appId");
+
+        restAPI.init(ip, port);
+        restAPI.setAccount(accountSid, accountToken);
+        restAPI.setAppId(appId);
+    }
+
+
+
     @Override
     public boolean sendMsg(String msgId, String mobiles, String... args) {
         Map<String, Object> result = restAPI.sendTemplateSMS(mobiles,msgId,args);
@@ -25,20 +41,5 @@ public class YtxMsgServiceImpl implements YtxMsgService {
     }
 
 
-    @Override
-    public void init() {
-        if(restAPI==null) {
 
-            restAPI = new CCPRestSDK();
-            String ip = ConfigUtils.getString("yuntongxun.properties","ip");
-            String port = ConfigUtils.getString("yuntongxun.properties","port");
-            String accountSid = ConfigUtils.getString("yuntongxun.properties","accountSid");
-            String accountToken = ConfigUtils.getString("yuntongxun.properties","accountToken");
-            String appId = ConfigUtils.getString("yuntongxun.properties","appId");
-
-            restAPI.init(ip, port);
-            restAPI.setAccount(accountSid, accountToken);
-            restAPI.setAppId(appId);
-        }
-    }
 }

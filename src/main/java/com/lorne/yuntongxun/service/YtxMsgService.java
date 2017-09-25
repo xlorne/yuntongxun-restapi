@@ -6,7 +6,6 @@ package com.lorne.yuntongxun.service;
  */
 public interface YtxMsgService {
 
-    void init();
 
     boolean sendMsg(String msgId,String mobiles,String ... args);
 

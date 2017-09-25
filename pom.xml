@@ -18,6 +18,14 @@
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>lorne-repository</id>
+            <url>file:/developer/idea/lorne/repository/</url>
+        </repository>
+    </distributionManagement>
+
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

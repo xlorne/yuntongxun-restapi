@@ -1,13 +1,12 @@
 package com.cloopen.rest.sdk.utils;
 
 import java.util.Date;
-import java.util.Properties;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import com.cloopen.rest.sdk.CCPRestSDK;
+import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class LoggerUtil {
@@ -15,7 +14,7 @@ public class LoggerUtil {
 	private static Logger logger;
 	static {
 		if (logger == null) {
-			logger = Logger.getLogger(CCPRestSDK.class);
+			logger = LoggerFactory.getLogger(CCPRestSDK.class);
 			
 		}
 	}
@@ -29,7 +28,7 @@ public class LoggerUtil {
 	
 	public static void setLogLevel(int level) {
 		if (logger == null) {
-			logger = Logger.getLogger(CCPRestSDK.class);
+			logger = LoggerFactory.getLogger(CCPRestSDK.class);
 		}
 		PropertyConfigurator.configure(PropertiesUtil.getPropertie(level));
 		 
@@ -47,19 +46,16 @@ public class LoggerUtil {
 			logger.info(new Date()+" "+msg);
 	}
 
-	public static void warn(Object msg) {
-		if (isLog)
-			logger.warn(msg);
-	}
 
-	public static void error(Object msg) {
+
+	public static void error(String msg) {
 		if (isLog)
 			logger.error(msg);
 	}
 
-	public static void fatal(Object msg) {
+	public static void fatal(String msg) {
 		if (isLog)
-			logger.fatal(msg);
+			logger.error(msg);
 	}
 	  
 }

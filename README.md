@@ -6,7 +6,7 @@
 ```
  <dependency>
     <groupId>com.github.1991wangliang</groupId>
-    <artifactId>yunyongxun</artifactId>
+    <artifactId>yuntongxun</artifactId>
     <version>1.0.0</version>
  </dependency>
 ```
